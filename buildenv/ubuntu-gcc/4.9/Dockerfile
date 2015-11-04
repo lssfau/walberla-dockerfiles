@@ -19,7 +19,7 @@ ENV GCC_VERSION 4.9.3
 
 # "download_prerequisites" pulls down a bunch of tarballs and extracts them,
 # but then leaves the tarballs themselves lying around
-RUN buildDeps='flex' \
+RUN buildDeps='flex curl wget' \
 	&& set -x \
 	&& apt-get update && apt-get install -y $buildDeps --no-install-recommends \
 	&& rm -r /var/lib/apt/lists/* \
