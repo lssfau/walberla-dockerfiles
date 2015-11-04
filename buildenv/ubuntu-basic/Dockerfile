@@ -5,7 +5,6 @@ MAINTAINER Martin Bauer "martin.bauer@fau.de"
 RUN apt-get update && apt-get upgrade -y &&  apt-get install  -y \
                build-essential \
                cmake \ 
-               curl \
                openmpi-common  \
                git \
                libopenmpi-dev \
