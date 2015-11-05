@@ -17,7 +17,7 @@ RUN buildDeps='python2.7 wget' \
 	&& dir="$(mktemp -d)" \
 	&& cd "$dir" \
 	&& cmake $BASEPATH \
-	&& make \
+	&& make -j"$(nproc)" \
 	&& make install \
 	&& cd .. \
 	&& rm -rf "$dir" \
