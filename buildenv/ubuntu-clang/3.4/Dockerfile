@@ -10,3 +10,4 @@ RUN update-alternatives --install /usr/bin/clang   clang   /usr/bin/clang-3.4 99
  && update-alternatives --install /usr/bin/cc  cc  /usr/bin/clang-3.4 999 \
  && update-alternatives --install /usr/bin/c++ c++ /usr/bin/clang++-3.4 999
 
+ENV CC="ccache clang" CXX="ccache clang++"

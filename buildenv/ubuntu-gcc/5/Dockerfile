@@ -11,3 +11,4 @@ RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 999 \
  && update-alternatives --install /usr/bin/cc  cc  /usr/bin/gcc-5 999 \
  && update-alternatives --install /usr/bin/c++ c++ /usr/bin/g++-5 999
 
+ENV CC="ccache gcc" CXX="ccache g++" 
