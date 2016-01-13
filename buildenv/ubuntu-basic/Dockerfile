@@ -7,13 +7,15 @@ RUN apt-get update &&  apt-get install  -y \
     ccache \
     cmake \ 
     git \
-    libbz2-dev \
+    libboost-dev \
+    libboost-filesystem-dev \
+    libboost-regex-dev \
+    libboost-system-dev \
+    libboost-thread-dev \
     libopenmpi-dev \
     openmpi-bin \
     openmpi-common  \
     openssh-client \  
-    python3.5-dev \
-    wget \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/* 
 
