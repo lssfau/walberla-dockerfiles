@@ -3,6 +3,7 @@ MAINTAINER Martin Bauer "martin.bauer@fau.de"
 
 RUN apt-get update &&  apt-get install  -y \
     python3.5-dev \
+    python3-numpy \
     libbz2-dev \
     wget \    
  && apt-get clean \
