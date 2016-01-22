@@ -17,4 +17,4 @@ RUN cd /opt \
  && cd /opt \
  && rm -rf boost*
  
-ENV BOOST_ROOT /usr/local 
+ENV BOOST_ROOT /usr/local
