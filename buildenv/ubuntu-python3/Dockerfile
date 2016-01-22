@@ -4,6 +4,7 @@ MAINTAINER Martin Bauer "martin.bauer@fau.de"
 RUN apt-get update &&  apt-get install  -y \
     python3.5-dev \
     python3-numpy \
+    python3-matplotlib \
     libbz2-dev \
     wget \    
  && apt-get clean \
@@ -18,3 +19,5 @@ RUN cd /opt \
  && ./b2 -j $(nproc) toolset=gcc link=shared install \
  && cd /opt \
  && rm -rf boost*
+ 
+ENV BOOST_ROOT /usr/local
