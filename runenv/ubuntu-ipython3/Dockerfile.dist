@@ -25,5 +25,5 @@ EXPOSE 8888
 
 ADD jupyter_notebook_config.py /root/.jupyter/
 ADD ipcluster_config.py /root/.ipython/profile_default/
-CMD ipython notebook --ip="*" --no-browser
+CMD jupyter notebook --ip="*" --no-browser
 
