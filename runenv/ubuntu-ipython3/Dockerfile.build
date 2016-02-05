@@ -1,0 +1,23 @@
+FROM walberla/buildenv-ubuntu-python3
+MAINTAINER Martin Bauer "martin.bauer@fau.de"
+
+ADD walberla /opt/waLBerla/code
+
+
+RUN mkdir /opt/waLBerla/build-debug && \
+    mkdir /opt/waLBerla/build-release && \
+    cd /opt/waLBerla/build-release && \ 
+    cmake ../code -DCMAKE_BUILD_TYPE=Release -DWALBERLA_BUILD_WITH_PYTHON=1 -DWALBERLA_BUILD_WITH_PYTHON_MODULE=1 && make walberla_cpp && \
+    cd /opt/waLBerla/build-debug  && \
+    cmake ../code -DCMAKE_BUILD_TYPE=Debug   -DWALBERLA_BUILD_WITH_PYTHON=1 -DWALBERLA_BUILD_WITH_PYTHON_MODULE=1 && make walberla_cpp
+
+RUN mkdir /opt/pywaLBerla && \
+    cd /opt/pywaLBerla && \
+    cp    /opt/waLBerla/build-debug/apps/pythonmodule/walberla_cpp.so  ./walberla_cpp_debug.so &&   \
+    cp    /opt/waLBerla/build-release/apps/pythonmodule/walberla_cpp.so  ./walberla_cpp_release.so && \
+    cp -r /opt/waLBerla/code/python/waLBerla . &&                       \
+    ln -s  walberla_cpp_release.so  walberla_cpp.so &&                   \
+    tar -zcvf pywaLBerla.tar.gz *
+
+ENTRYPOINT ["cat", "/opt/pywaLBerla/pywaLBerla.tar.gz" ]
+

@@ -1,0 +1,29 @@
+FROM walberla/buildenv-ubuntu-python3
+MAINTAINER Martin Bauer "martin.bauer@fau.de"
+ 
+RUN apt-get update && apt-get upgrade -y &&  apt-get install  -y \
+    python3-pip        \
+    python3-scipy      \
+    python3-pandas     \
+    libzmq3-dev        \
+    llvm-3.6-dev       \ 
+    libz-dev           \
+    libedit-dev        \
+    llvm-3.6-dev       \
+    ffmpeg
+    
+
+ENV LLVM_CONFIG /usr/bin/llvm-config-3.6   
+RUN pip3 install "ipython[notebook]" Cython ipyparallel numba ipywidgets sympy
+
+ADD pywaLBerla.tar.gz /opt/pywaLBerla
+ENV PYTHONPATH /opt/pywaLBerla
+
+#ADD notebooks /opt/notebooks
+#WORKDIR /opt/notebooks
+EXPOSE 8888
+
+ADD jupyter_notebook_config.py /root/.jupyter/
+ADD ipcluster_config.py /root/.ipython/profile_default/
+CMD ipython notebook --ip="*" --no-browser
+
