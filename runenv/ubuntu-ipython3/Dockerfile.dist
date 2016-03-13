@@ -2,25 +2,30 @@ FROM walberla/buildenv-ubuntu-python3
 MAINTAINER Martin Bauer "martin.bauer@fau.de"
  
 RUN apt-get update && apt-get upgrade -y &&  apt-get install  -y \
+    pandoc             \
     python3-pip        \
     python3-scipy      \
     python3-pandas     \
     libzmq3-dev        \
-    llvm-3.6-dev       \ 
+    llvm-3.7-dev       \
     libz-dev           \
     libedit-dev        \
-    llvm-3.6-dev       \
+    llvm-3.7-dev       \
     ffmpeg
     
 
-ENV LLVM_CONFIG /usr/bin/llvm-config-3.6   
+ENV LLVM_CONFIG /usr/bin/llvm-config-3.7
+
+# Install directly from repository due to linker problem when installing 0.9.0 via pip
+RUN cd /opt && git clone https://github.com/numba/llvmlite.git && cd llvmlite && python3 setup.py install && cd .. && rm -rf llvmlite
+
 RUN pip3 install "ipython[notebook]" Cython ipyparallel numba ipywidgets sympy
 
 ADD pywaLBerla.tar.gz /opt/pywaLBerla
 ENV PYTHONPATH /opt/pywaLBerla
 
-#ADD notebooks /opt/notebooks
-#WORKDIR /opt/notebooks
+ADD notebooks /opt/notebooks
+WORKDIR /opt/notebooks
 EXPOSE 8888
 
 ADD jupyter_notebook_config.py /root/.jupyter/

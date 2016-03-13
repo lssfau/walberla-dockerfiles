@@ -4,7 +4,7 @@ MAINTAINER Martin Bauer "martin.bauer@fau.de"
 
 RUN zypper -n --gpg-auto-import-keys refresh && \
     zypper -n --gpg-auto-import-keys install \
-                devel_C_C++ \
+                patterns-openSUSE-devel_C_C++ \
                 ccache \
                 cmake \
                 git \
