@@ -1,4 +1,4 @@
-FROM walberla/buildenv-ubuntu-basic
+FROM walberla/buildenv-ubuntu-basic:15.10
 
 RUN apt-get update &&  apt-get install  -y \
     gcc-5 \

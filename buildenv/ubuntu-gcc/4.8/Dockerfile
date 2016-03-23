@@ -1,4 +1,4 @@
-FROM walberla/buildenv-ubuntu-basic
+FROM walberla/buildenv-ubuntu-basic:15.04
 
 RUN apt-get update &&  apt-get install  -y \
     gcc-4.8 \
