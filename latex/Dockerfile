@@ -1,4 +1,4 @@
-FROM ubuntu:15.10
+FROM ubuntu:16.04
 MAINTAINER Christian Godenschwager "christian.godenschwager@fau.de"
 
 RUN apt-get update &&  apt-get install  -y \
