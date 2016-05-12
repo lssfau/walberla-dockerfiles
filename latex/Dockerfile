@@ -9,9 +9,11 @@ RUN apt-get update &&  apt-get install  -y \
     python-matplotlib \
     make \
  && curl -O http://de.archive.ubuntu.com/ubuntu/pool/universe/b/biber/biber_2.4-1_all.deb \
- && dpkg -i biber_2.4-1_all.deb \
+ && apt-get install -y gdebi \
+ && gdebi -n biber_2.4-1_all.deb \
  && rm biber_2.4-1_all.deb \
- && apt-get -f install \
+ && apt-get remove gdebi \
+ && apt-get autoremove \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
