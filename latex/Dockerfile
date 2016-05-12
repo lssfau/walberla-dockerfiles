@@ -8,7 +8,7 @@ RUN apt-get update &&  apt-get install  -y \
     gnuplot \
     python-matplotlib \
     make \
- && curl http://de.archive.ubuntu.com/ubuntu/pool/universe/b/biber/biber_2.4-1_all.deb \
+ && curl -O http://de.archive.ubuntu.com/ubuntu/pool/universe/b/biber/biber_2.4-1_all.deb \
  && dpkg -i biber_2.4-1_all.deb \
  && rm biber_2.4-1_all.deb \
  && apt-get -f install \
