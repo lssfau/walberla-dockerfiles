@@ -12,8 +12,8 @@ RUN apt-get update &&  apt-get install  -y \
  && apt-get install -y gdebi \
  && gdebi -n biber_2.4-1_all.deb \
  && rm biber_2.4-1_all.deb \
- && apt-get remove gdebi \
- && apt-get autoremove \
+ && apt-get remove -y gdebi \
+ && apt-get autoremove -y \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
