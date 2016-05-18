@@ -1,0 +1,29 @@
+package:
+   name: grandchem
+   version: 0.1
+
+source:
+   git_url: git@i10git.cs.fau.de:walberla-apps/grandchem.git
+   git_rev: master
+
+build:
+   number: 5
+
+
+requirements:
+   build:
+      - python
+      - git
+      - boost  ==1.58.0
+      - cmake
+      - gcc
+      - mpich2
+   run:
+      - python
+      - boost  ==1.58.0
+      - numpy
+      - mpich2
+
+about:
+   home: www.walberla.net
+   license: GPL3
