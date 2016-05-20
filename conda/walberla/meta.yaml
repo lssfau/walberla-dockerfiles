@@ -12,15 +12,16 @@ source:
 requirements:
    build:
       - git
-      - boost ==1.58.0
+      - boost ==1.58.0 [linux]
+      - boost [win]
       - cmake
-      - gcc
-      - mpich2
+      - gcc [linux]
+      - mpich2 [linux]
    run:
-      - boost ==1.58.0
+      - boost ==1.58.0 [linux]
+      - boost [win]
       - numpy
-      - mpich2
-
+      - mpich2 [linux]
 about:
    home: www.walberla.net
    license: GPL3
