@@ -6,7 +6,8 @@ RUN apt-get update &&  apt-get install  -y \
     build-essential \
     libpcre3-dev \
     curl \ 
-    python \  
+    python \
+    python-pygments \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
