@@ -1,5 +1,4 @@
-FROM walberla/buildenv-gcc:5
-
+FROM walberla/buildenv-ubuntu-gcc:5
 MAINTAINER Christian Godenschwager "christian.godenschwager@fau.de"
 
 RUN apt-get update &&  apt-get install  -y \
