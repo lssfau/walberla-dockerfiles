@@ -4,8 +4,8 @@ MAINTAINER Martin Bauer "martin.bauer@fau.de"
 # OpenSSH is required to run MPI applications
 RUN apt-get update &&  apt-get install  -y \
     build-essential \
-    ccache \
     cmake \ 
+    curl \
     git \
     libboost-dev \
     libboost-filesystem-dev \
@@ -19,4 +19,13 @@ RUN apt-get update &&  apt-get install  -y \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/* 
 
+RUN cd /tmp \
+ && curl https://www.samba.org/ftp/ccache/ccache-3.2.5.tar.xz | tar xJ \
+ && cd ccache-3.2.5 \
+ && ./configure \
+ && make \
+ && make install \
+ && cd \
+ && rm -r /tmp/ccache-3.2.5
+ 
 ENV CCACHE_DIR=/ccache
