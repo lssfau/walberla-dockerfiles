@@ -2,6 +2,7 @@ FROM walberla/buildenv-ubuntu-basic:16.04
 
 RUN apt-get update &&  apt-get install  -y \
     clang-3.7 \
+    libomp-dev \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/* 
 
