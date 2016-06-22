@@ -1,0 +1,3 @@
+Package: *
+Pin: release a=xenial-proposed
+Pin-Priority: 400
