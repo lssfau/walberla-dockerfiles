@@ -24,7 +24,7 @@ RUN pip3 install "ipython[notebook]" Cython ipyparallel numba ipywidgets sympy
 ADD pywaLBerla.tar.gz /opt/pywaLBerla
 ENV PYTHONPATH /opt/pywaLBerla
 
-ADD notebooks /opt/notebooks
+ADD walberla/python/waLBerla_docs/ipython/ipython-tutorials /opt/notebooks
 WORKDIR /opt/notebooks
 EXPOSE 8888
 

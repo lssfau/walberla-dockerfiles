@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Clone waLBerla from internal repository ( access required )
-#git clone git@i10git.cs.fau.de:software/walberla.git
+git clone git@i10git.cs.fau.de:software/walberla.git
 # Add the source code to private image and build waLBerla there
 sudo docker build -t walberla/runenv-ubuntu-python-build -f Dockerfile.build .
 # Copy the build results

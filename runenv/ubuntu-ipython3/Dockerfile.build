@@ -7,9 +7,9 @@ ADD walberla /opt/waLBerla/code
 RUN mkdir /opt/waLBerla/build-debug && \
     mkdir /opt/waLBerla/build-release && \
     cd /opt/waLBerla/build-release && \ 
-    cmake ../code -DCMAKE_BUILD_TYPE=Release -DWALBERLA_BUILD_WITH_PYTHON=1 -DWALBERLA_BUILD_WITH_PYTHON_MODULE=1 && make walberla_cpp && \
+    cmake ../code -DCMAKE_BUILD_TYPE=Release -DWALBERLA_BUILD_WITH_PYTHON=1 -DWALBERLA_BUILD_WITH_PYTHON_MODULE=1 && make walberla_cpp -j8 && \
     cd /opt/waLBerla/build-debug  && \
-    cmake ../code -DCMAKE_BUILD_TYPE=Debug   -DWALBERLA_BUILD_WITH_PYTHON=1 -DWALBERLA_BUILD_WITH_PYTHON_MODULE=1 && make walberla_cpp
+    cmake ../code -DCMAKE_BUILD_TYPE=Debug   -DWALBERLA_BUILD_WITH_PYTHON=1 -DWALBERLA_BUILD_WITH_PYTHON_MODULE=1 && make walberla_cpp -j8
 
 RUN mkdir /opt/pywaLBerla && \
     cd /opt/pywaLBerla && \

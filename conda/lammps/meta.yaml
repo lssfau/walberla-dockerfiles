@@ -3,11 +3,14 @@ package:
    version: icms
 
 build:
-   number: 2
+   number: 5
 
 source:
+   #git_url: https://github.com/lammps/lammps.git
+   #git_rev: lammps-icms
    git_url: https://github.com/lammps/lammps.git
    git_rev: lammps-icms
+
    patches: 
       - AddMakefile.patch
 

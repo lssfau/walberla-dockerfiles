@@ -1,8 +1,8 @@
 diff --git src/MAKE/MACHINES/Makefile.conda src/MAKE/MACHINES/Makefile.conda
 new file mode 100644
-index 0000000..f7c4d8d
+index 0000000..11bc0d8
 --- /dev/null
-+++ /src/MAKE/MACHINES/Makefile.conda
++++ b/src/MAKE/MACHINES/Makefile.conda
 @@ -0,0 +1,123 @@
 +# conda = Conda Python packet manager
 +
@@ -16,12 +16,12 @@ index 0000000..f7c4d8d
 +# specify flags and libraries needed for your compiler
 +
 +CC =		$(CONDA_PREFIX)/bin/mpic++
-+CCFLAGS =	-g -O3 # -Wunused
++CCFLAGS =	-g -O3 -fopenmp # -Wunused
 +SHFLAGS =	-fPIC
 +DEPFLAGS =	-M
 +
 +LINK =		$(CONDA_PREFIX)/bin/mpic++
-+LINKFLAGS =	-g -O3
++LINKFLAGS =	-g -O3 -fopenmp
 +LIB = 
 +SIZE =		size
 +
