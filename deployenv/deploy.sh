@@ -40,7 +40,9 @@ echo " ---- Generating Website  ----- "
 cd $WEBSITE_DIR
 mkdir generated
 python main.py generated --walberla-dir ../walberla
+sshpass -p $I10WEB_DEPLOY_PASSWORD ssh deploy@i10web rm -rf ~deploy/www.walberla.net
 sshpass -p $I10WEB_DEPLOY_PASSWORD scp -r -o 'StrictHostKeyChecking no' generated deploy@i10web:~deploy/www.walberla.net
+sshpass -p $I10WEB_DEPLOY_PASSWORD ssh deploy@i10web sudo /srv/www/deploy_walberla_net.sh
 
 
 # ---------------------  Create docker image and upload it to dockerhub  ---------------------
