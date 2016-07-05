@@ -48,6 +48,7 @@ sshpass -p $I10WEB_DEPLOY_PASSWORD scp -r -o 'StrictHostKeyChecking no' generate
 echo " ---- Create docker run environment for waLBerla  ----- "
 
 cd $DEPLOY_REPO_DIR/runenv/ubuntu-ipython3/
+cp -r $WALBERLA_DIR .
 docker build -t walberla/runenv-ubuntu-python-build -f Dockerfile.build .
 docker run --rm walberla/runenv-ubuntu-python-build > pywaLBerla.tar.gz
 docker build -t walberla/runenv-ubuntu-python -f Dockerfile.dist .
