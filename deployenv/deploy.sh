@@ -14,8 +14,6 @@ git clone https://github.com/lssfau/walberla-dockerfiles.git
 
 #!/bin/bash
 
-set -e
-
 BASE_DIR=`pwd`
 WALBERLA_DIR=$BASE_DIR/walberla
 WEBSITE_DIR=$BASE_DIR/walberla-website
@@ -28,22 +26,21 @@ export PATH=$PATH:/root/miniconda3/bin
 
 echo " ---- Building conda package ----- "
 cd $DEPLOY_REPO_DIR/conda/walberla 
-python generateMetaYaml.py
-conda build . 
+WALBERLA_CI_TOKEN=$WALBERLA_CI_TOKEN python generateMetaYaml.py
+conda build -c lssfau . 
 anaconda login --username lssdeploy --password $ANACONDA_DEPLOY_PASSWORD
 anaconda upload --user lssfau /root/miniconda3/conda-bld/linux-64/walberla-*.dev0-0.tar.bz2 
-conda install -y --channel walberla  # install the package that has been uploaded just now
+conda install -y -c lssfau walberla  # install the package that has been uploaded just now
 
 
 
 # -------------------------  Create website and upload it to i10web -------------------------
 
 echo " ---- Generating Website  ----- "
-cd $WALBERLA_DIR
+cd $WEBSITE_DIR
 mkdir generated
-python main.py generated --walberla-dir ../walberla  
-# TODO copy to i10web
-
+python main.py generated --walberla-dir ../walberla
+sshpass -p $I10WEB_DEPLOY_PASSWORD scp -r -o 'StrictHostKeyChecking no' generated deploy@i10web:~deploy/www.walberla.net
 
 
 # ---------------------  Create docker image and upload it to dockerhub  ---------------------
