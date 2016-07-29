@@ -30,7 +30,7 @@ WALBERLA_CI_TOKEN=$WALBERLA_CI_TOKEN python generateMetaYaml.py
 conda build -c lssfau . 
 anaconda login --username lssdeploy --password $ANACONDA_DEPLOY_PASSWORD
 anaconda upload --user lssfau /root/miniconda3/conda-bld/linux-64/walberla-*.dev0-0.tar.bz2 
-conda install -y -c lssfau walberla  # install the package that has been uploaded just now
+conda install -y -q -c lssfau walberla  # install the package that has been uploaded just now
 
 
 
@@ -39,8 +39,8 @@ conda install -y -c lssfau walberla  # install the package that has been uploade
 echo " ---- Generating Website  ----- "
 cd $WEBSITE_DIR
 mkdir generated
-python main.py generated --walberla-dir ../walberla
-sshpass -p $I10WEB_DEPLOY_PASSWORD ssh deploy@i10web rm -rf ~deploy/www.walberla.net
+python main.py generated --walberla-dir $WALBERLA_DIR
+sshpass -p $I10WEB_DEPLOY_PASSWORD ssh -o 'StrictHostKeyChecking no' deploy@i10web rm -rf ~deploy/www.walberla.net
 sshpass -p $I10WEB_DEPLOY_PASSWORD scp -r -o 'StrictHostKeyChecking no' generated deploy@i10web:~deploy/www.walberla.net
 sshpass -p $I10WEB_DEPLOY_PASSWORD ssh deploy@i10web sudo /srv/www/deploy_walberla_net.sh
 

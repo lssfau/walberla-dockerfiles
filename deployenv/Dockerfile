@@ -12,15 +12,17 @@ RUN apt-get update && apt-get install -y doxygen wget apt-transport-https ca-cer
       && apt-get clean \
       && rm -rf /var/lib/apt/lists/* 
 
-    
+      
 # install mini conda
 RUN wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh && \
     /bin/bash Miniconda3-latest-Linux-x86_64.sh -b &&  \
-    rm Miniconda3-latest-Linux-x86_64.sh && \
-    export PATH=$PATH:/root/miniconda3/bin && \
-    conda install -y sphinx pyyaml anaconda-client anaconda-build conda-build scipy matplotlib sympy jinja2 && \
+    rm Miniconda3-latest-Linux-x86_64.sh 
+    
+ENV PATH $PATH:/root/miniconda3/bin    
+    
+RUN conda install -y sphinx pyyaml anaconda-client anaconda-build conda-build scipy matplotlib sympy jinja2 && \
     pip install pint sphinx_rtd_theme && \
-    conda clean --all
+    conda clean --all 
     
 RUN curl -sSL https://get.docker.com/ | sh && \
     apt-get clean && \
