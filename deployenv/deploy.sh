@@ -8,8 +8,8 @@
 
 
 # Clone repositories
-git clone https://gitlab-ci-token:${WALBERLA_CI_TOKEN}@i10git.cs.fau.de/software/walberla.git
-git clone https://gitlab-ci-token:${WALBERLA_WEBSITE_CI_TOKEN}@i10git.cs.fau.de/administration/walberla-website.git
+git clone https://deploy:${GITLAB_DEPLOY_PASSWORD}@i10git.cs.fau.de/software/walberla.git
+git clone https://deploy:${GITLAB_DEPLOY_PASSWORD}@i10git.cs.fau.de/administration/walberla-website.git
 git clone https://github.com/lssfau/walberla-dockerfiles.git 
 
 #!/bin/bash
@@ -26,7 +26,7 @@ export PATH=$PATH:/root/miniconda3/bin
 
 echo " ---- Building conda package ----- "
 cd $DEPLOY_REPO_DIR/conda/walberla 
-WALBERLA_CI_TOKEN=$WALBERLA_CI_TOKEN python generateMetaYaml.py
+GITLAB_DEPLOY_PASSWORD=$GITLAB_DEPLOY_PASSWORD python generateMetaYaml.py
 conda build -c lssfau . 
 anaconda login --username lssdeploy --password $ANACONDA_DEPLOY_PASSWORD
 anaconda upload --user lssfau /root/miniconda3/conda-bld/linux-64/walberla-*.dev0-0.tar.bz2 

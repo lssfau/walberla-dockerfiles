@@ -2,8 +2,7 @@ FROM walberla/buildenv-ubuntu-basic
 MAINTAINER Martin Bauer "martin.bauer@fau.de"
 
 # Secrets that have to be set in the environment:
-# - WALBERLA_CI_TOKEN            CI Token for gitlab waLBerla repository 
-# - WALBERLA_WEBSITE_CI_TOKEN    CI Token for gitlab repo of waLBerla website
+# - GIBLAB_DEPLOY_PASSWORD       Password of deploy user in gitlab to clone waLBerla and waLBerla website repositories
 # - ANACONDA_DEPLOY_PASSWORD     Password of user lssdeploy at anaconda cloud, which is used to upload package to lssfau channel
 # - DOCKERHUB_DEPLOY_PASSWORD    Password of user lssdeploy at dockerhub, to upload runenv-ubuntu-python package
 # - I10WEB_DEPLOY_PASSWORD       Password of deploy user on i10web

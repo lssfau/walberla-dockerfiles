@@ -4,8 +4,9 @@ from os import environ
 from yaml import dump 
 from datetime import datetime
 
-if 'WALBERLA_CI_TOKEN' in environ:
-    git_url = 'https://gitlab-ci-token:%s@i10git.cs.fau.de/software/walberla.git' % ( environ['WALBERLA_CI_TOKEN'], )
+
+if 'GITLAB_DEPLOY_PASSWORD' in environ:
+    git_url = 'https://deploy:%s@i10git.cs.fau.de/software/walberla.git' % ( environ['GITLAB_DEPLOY_PASSWORD'], )
 else:
     git_url = 'git@i10git.cs.fau.de:software/walberla.git'
 
