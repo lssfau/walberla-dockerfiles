@@ -20,13 +20,14 @@ RUN apt-get update &&  apt-get install  -y \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/* 
 
-RUN cd /tmp \
- && curl https://www.samba.org/ftp/ccache/ccache-3.3.tar.xz | tar xJ \
- && cd ccache-3.3 \
+RUN export VERSION=3.3.2 \
+ && cd /tmp \
+ && curl https://www.samba.org/ftp/ccache/ccache-$VERSION.tar.xz | tar xJ \
+ && cd ccache-$VERSION \
  && ./configure \
  && make \
  && make install \
  && cd \
- && rm -r /tmp/ccache-3.3
+ && rm -r /tmp/ccache-$VERSION
  
 ENV CCACHE_DIR=/ccache
