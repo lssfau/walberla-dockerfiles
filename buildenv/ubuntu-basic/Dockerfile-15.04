@@ -3,6 +3,7 @@ MAINTAINER Martin Bauer "martin.bauer@fau.de"
 
 # OpenSSH is required to run MPI applications
 RUN apt-get update &&  apt-get install  -y \
+    automake \
     build-essential \
     cmake \ 
     curl \
