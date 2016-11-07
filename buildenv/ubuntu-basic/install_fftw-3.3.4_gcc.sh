@@ -904,7 +904,7 @@ ENABLE_OPENMP="--enable-openmp"
 DISABLE_SHARED="--disable-shared"
 
 ./configure --prefix=$INSTALLDIR \
-  $ENABLE_MPI $ENABLE_OPENMP $ENABLE_THREADS $DISABLE_SHARED \
+  $ENABLE_MPI $ENABLE_OPENMP $ENABLE_THREADS $DISABLE_SHARED --disable-fortran \
   CC="mpicc" F77="mpif90" MPICC="mpicc" \
   CFLAGS="-O3" FFLAGS="-O3" \
   MPILIBS=" " 2>&1 | tee -a $LOGFILE

@@ -25,7 +25,7 @@ mkdir $TMP && cd $TMP
 curl -L http://www.tu-chemnitz.de/~potts/workgroup/pippig/software/pfft-$PFFT_VERSION.tar.gz | tar xz
 cd pfft-$PFFT_VERSION
 
-./configure --prefix=$INSTDIR --disable-shared \
+./configure --prefix=$INSTDIR --disable-shared --disable-fortran \
   CPPFLAGS="-I$FFTWDIR/include" \
   LDFLAGS="-L$FFTWDIR/lib -L$FFTWDIR/lib64" \
   FC=mpif90 CC=mpicc MPICC=mpicc MPIFC=mpif90 2>&1 | tee $LOGFILE
