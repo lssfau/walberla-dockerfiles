@@ -6,6 +6,7 @@ RUN apt-get update &&  apt-get install  -y \
     build-essential \
     cmake \ 
     curl \
+    gfortran \
     git \
     libboost-dev \
     libboost-filesystem-dev \
@@ -20,14 +21,12 @@ RUN apt-get update &&  apt-get install  -y \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/* 
 
-RUN export VERSION=3.3.2 \
- && cd /tmp \
- && curl https://www.samba.org/ftp/ccache/ccache-$VERSION.tar.xz | tar xJ \
- && cd ccache-$VERSION \
- && ./configure \
- && make \
- && make install \
- && cd \
- && rm -r /tmp/ccache-$VERSION
+ADD install*.sh /root/ 
+
+RUN /root/install_ccache.sh 
+
+RUN /root/install_fftw-3.3.4_gcc.sh
+RUN /root/install_pfft-1.0.8-alpha_gcc.sh
+ENV CMAKE_PREFIX_PATH=/opt/fftw-3.3.4:/opt/pfft-1.0.8-alpha:$CMAKE_PREFIX_PATH
  
 ENV CCACHE_DIR=/ccache
