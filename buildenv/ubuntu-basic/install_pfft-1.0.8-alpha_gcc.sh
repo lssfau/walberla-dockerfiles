@@ -26,6 +26,7 @@ curl -L http://www.tu-chemnitz.de/~potts/workgroup/pippig/software/pfft-$PFFT_VE
 cd pfft-$PFFT_VERSION
 
 ./configure --prefix=$INSTDIR --disable-shared --disable-fortran \
+  --with-gcc-arch=core2 \
   CPPFLAGS="-I$FFTWDIR/include" \
   LDFLAGS="-L$FFTWDIR/lib -L$FFTWDIR/lib64" \
   FC=mpif90 CC=mpicc MPICC=mpicc MPIFC=mpif90 2>&1 | tee $LOGFILE
