@@ -23,9 +23,7 @@ RUN conda install -y sphinx pyyaml anaconda-client anaconda-build conda-build sc
     pip install pint sphinx_rtd_theme && \
     conda clean --all 
     
-RUN curl -sSL https://get.docker.com/ | sh && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/* 
+RUN curl -sSL https://get.docker.com/ | sh
 
 ADD deploy.sh  /usr/bin/deploy
 
