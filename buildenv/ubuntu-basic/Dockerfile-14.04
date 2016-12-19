@@ -24,6 +24,8 @@ RUN apt-get update &&  apt-get install  -y \
  
 ADD install*.sh /root/ 
 
+RUN /root/install_openmesh.sh
+
 RUN /root/install_ccache.sh 
 
 RUN /root/install_fftw-3.3.4_gcc.sh
