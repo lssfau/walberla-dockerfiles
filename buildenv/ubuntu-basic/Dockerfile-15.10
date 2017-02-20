@@ -6,8 +6,10 @@ RUN apt-get update &&  apt-get install  -y \
     automake \
     build-essential \
     cmake \ 
-    curl \
-    git \
+    curl \    
+    doxygen \
+    git \    
+    graphviz \
     libboost-dev \
     libboost-filesystem-dev \
     libboost-program-options-dev \
