@@ -1,18 +1,16 @@
-FROM walberla/buildenv-ubuntu-basic:16.04
+FROM walberla/buildenv-ubuntu-basic:16.10
 
 RUN apt-get update &&  apt-get install  -y \
+    clang-3.9 \
+    libomp-dev \
     libbz2-dev \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/* 
 
-RUN cd /usr/local \
- && curl -L http://llvm.org/releases/3.9.0/clang+llvm-3.9.0-x86_64-linux-gnu-ubuntu-16.04.tar.xz | tar --strip-components=1 -xJ
-
- 
-RUN update-alternatives --install /usr/bin/clang   clang   /usr/local/bin/clang 999 \
- && update-alternatives --install /usr/bin/clang++ clang++ /usr/local/bin/clang++ 999 \
- && update-alternatives --install /usr/bin/cc  cc  /usr/local/bin/clang 999 \
- && update-alternatives --install /usr/bin/c++ c++ /usr/local/bin/clang++ 999
+RUN update-alternatives --install /usr/bin/clang   clang   /usr/bin/clang-3.9 999 \
+ && update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-3.9 999 \
+ && update-alternatives --install /usr/bin/cc  cc  /usr/bin/clang-3.9 999 \
+ && update-alternatives --install /usr/bin/c++ c++ /usr/bin/clang++-3.9 999
 
 RUN cd /tmp \
  && mkdir boost \
