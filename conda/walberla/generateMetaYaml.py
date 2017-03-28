@@ -28,16 +28,16 @@ contents = {
     
     'requirements' : {
         'build' : [
+                'python >=3.6',
                 'git',
-                'boost ==1.58.0 [linux]',
-                'boost [win]',
+                'boost',
                 'cmake',
                 'gcc [linux]',
                 'mpich2 [linux]',
             ],
         'run' : [
-                'boost ==1.58.0 [linux]',
-                'boost [win]',
+                'python >=3.6',
+                'boost',
                 'numpy',
                 'mpich2 [linux]',
         ],
