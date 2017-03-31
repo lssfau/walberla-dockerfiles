@@ -1,6 +1,7 @@
 FROM walberla/buildenv-ubuntu-basic:16.10
 
 RUN apt-get update &&  apt-get install  -y \
+    libomp-dev \
     libbz2-dev \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/* 
