@@ -1,0 +1,37 @@
+FROM ubuntu:17.04
+MAINTAINER Christian Godenschwager <christian.godenschwager@fau.de>
+
+# OpenSSH is required to run MPI applications
+RUN apt-get update &&  apt-get install  -y \
+    automake \
+    build-essential \
+    cmake \ 
+    curl \
+    doxygen \
+    git \
+    graphviz \
+    libboost-dev \
+    libboost-filesystem-dev \
+    libboost-program-options-dev \
+    libboost-regex-dev \
+    libboost-system-dev \
+    libboost-thread-dev \
+    libbz2-dev \
+    libopenmpi-dev \
+    openmpi-bin \
+    openmpi-common  \
+    openssh-client \  
+ && apt-get clean \
+ && rm -rf /var/lib/apt/lists/* 
+
+ADD install*.sh /root/ 
+
+RUN /root/install_openmesh.sh
+
+RUN /root/install_ccache.sh 
+
+RUN /root/install_fftw-3.3.4_gcc.sh
+RUN /root/install_pfft-1.0.8-alpha_gcc.sh
+ENV CMAKE_PREFIX_PATH=/opt/fftw-3.3.4:/opt/pfft-1.0.8-alpha:$CMAKE_PREFIX_PATH
+ 
+ENV CCACHE_DIR=/ccache
