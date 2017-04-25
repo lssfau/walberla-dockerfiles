@@ -15,13 +15,13 @@ RUN apt-get update && apt-get install -y doxygen wget apt-transport-https ca-cer
 
       
 # install mini conda
-RUN wget https://repo.continuum.io/miniconda/Miniconda3-4.2.12-Linux-x86_64.sh && \
-    /bin/bash Miniconda3-4.2.12-Linux-x86_64.sh -b &&  \
-    rm Miniconda3-4.2.12-Linux-x86_64.sh 
+RUN wget https://repo.continuum.io/miniconda/Miniconda3-4.3.11-Linux-x86_64.sh && \
+    /bin/bash Miniconda3-4.3.11-Linux-x86_64.sh -b &&  \
+    rm Miniconda3-4.3.11-Linux-x86_64.sh 
     
 ENV PATH $PATH:/root/miniconda3/bin    
     
-RUN conda install -y sphinx pyyaml anaconda-client anaconda-build conda-build scipy matplotlib sympy jinja2 && \
+RUN conda install -y sphinx pyyaml anaconda-client conda-build scipy matplotlib sympy jinja2 && \
     pip install pint sphinx_rtd_theme && \
     conda clean --all 
     

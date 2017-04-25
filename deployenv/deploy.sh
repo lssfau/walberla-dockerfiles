@@ -8,7 +8,7 @@
 
 
 # Clone repositories
-git clone https://deploy:${GITLAB_DEPLOY_PASSWORD}@i10git.cs.fau.de/software/walberla.git
+git clone https://i10git.cs.fau.de/walberla/walberla.git
 git clone https://deploy:${GITLAB_DEPLOY_PASSWORD}@i10git.cs.fau.de/administration/walberla-website.git
 git clone https://github.com/lssfau/walberla-dockerfiles.git 
 

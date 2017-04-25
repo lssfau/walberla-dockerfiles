@@ -1,0 +1,28 @@
+about:
+  home: www.walberla.net
+  license: GPLv3
+package:
+  name: walberla
+  version: lbm_{{ GIT_DESCRIBE_TAG }}
+build:
+  number: {{ GIT_DESCRIBE_NUMBER }}
+
+
+requirements:
+  build:
+  - python >=3.6
+  - git
+  - boost
+  - cmake
+  - walberla < 0
+  - gcc [linux]
+  - mpich2 [linux]
+  run:
+  - python >=3.6
+  - boost
+  - numpy
+  - mpich2 [linux]
+source:
+  git_rev: master
+  #git_url: https://i10git.cs.fau.de:walberla/walberla.git
+  git_url: git@i10git.cs.fau.de:bauer/walberla.git

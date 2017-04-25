@@ -3,7 +3,11 @@ about:
   license: GPLv3
 package:
   name: walberla
-  version: 2017.03.28.dev0
+  version: {{ GIT_DESCRIBE_TAG }}
+build:
+  number: {{ GIT_DESCRIBE_NUMBER }}
+
+
 requirements:
   build:
   - python >=3.6
@@ -19,4 +23,5 @@ requirements:
   - mpich2 [linux]
 source:
   git_rev: master
-  git_url: git@i10git.cs.fau.de:software/walberla.git
+  #git_url: https://i10git.cs.fau.de:walberla/walberla.git
+  git_url: git@i10git.cs.fau.de:bauer/walberla.git
