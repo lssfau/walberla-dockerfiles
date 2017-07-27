@@ -20,8 +20,8 @@ RUN cd /tmp \
  && cd boost \
  && curl -L http://downloads.sourceforge.net/project/boost/boost/1.61.0/boost_1_61_0.tar.bz2 | tar xj \
  && cd boost_1_61_0 \
- && ./bootstrap.sh \
- && ./b2 -j $(nproc) toolset=clang --without-python install --prefix=/opt/boost \
+ && ./bootstrap.sh --with-python=/usr/bin/python3 \
+ && ./b2 -j $(nproc) toolset=clang install --prefix=/opt/boost \
  && cd \
  && rm -r /tmp/boost
 

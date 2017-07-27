@@ -2,8 +2,8 @@ about:
   home: www.walberla.net
   license: GPLv3
 package:
-  name: walberla
-  version: lbm_{{ GIT_DESCRIBE_TAG }}
+  name: walberla-lbm
+  version: {{ GIT_DESCRIBE_TAG }}
 build:
   number: {{ GIT_DESCRIBE_NUMBER }}
 
@@ -14,7 +14,6 @@ requirements:
   - git
   - boost
   - cmake
-  - walberla < 0
   - gcc [linux]
   - mpich2 [linux]
   run:
