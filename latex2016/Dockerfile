@@ -1,4 +1,4 @@
-FROM ubuntu:16.10
+FROM ubuntu:17.04
 MAINTAINER Christian Godenschwager "christian.godenschwager@fau.de"
 
 ADD 01_nodoc /etc/dpkg/dpkg.cfg.d/01_nodoc
