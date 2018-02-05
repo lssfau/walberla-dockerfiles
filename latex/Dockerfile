@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install  -y \
     texlive-full \
     git \
     gnuplot \
-    python-matplotlib \
+    python3-matplotlib \
     make \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
